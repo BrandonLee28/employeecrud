@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 app = Flask(__name__)
-import dynamodb_handler
 import boto3
 from decouple import config
 
@@ -22,12 +21,13 @@ resource = boto3.resource(
 )
  #aws stuff
 table = resource.Table('employeecrud')
+response = table.scan()
+data = response['Items']
 @app.route('/')
-def hello_world(table=table):
-   response = table.scan()
-   data = response['Items']
-   return render_template('index.html')
-   print(data)
+def hello_world(data=data):
+   return render_template('index.html', data=data)
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.jinja_env.auto_reload = True
+   app.config['TEMPLATES_AUTO_RELOAD'] = True
+   app.run(debug=True, port=3000)

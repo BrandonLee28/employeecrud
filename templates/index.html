@@ -22,6 +22,7 @@
           <td>$900,000</td>
           <td><input type="button" value="Edit"><input type="button" value="Delete"></td>
         </tr>
+        {% print() %}
         <tr>
           <td>Dwayne Johnson</td>
           <td>42</td>
@@ -34,9 +35,9 @@
           <td>{{ x['FirstName']}}</td>
           <td>{{ x['LastName']}}</td>
           <td>{{ x['Sex']}}</td>
-          <td>{{'$'+ x['Salary']}}</td>
+          <td>{{ x['Salary']}}</td>
           <td><input type="button" value="Edit"><input type="button" value="Delete"></td>
         </tr>
-      {% endfor %}
+        {% endfor %}
       </tbody>
     </table>
