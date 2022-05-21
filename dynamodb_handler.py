@@ -19,4 +19,7 @@ resource = boto3.resource(
 )
 
 table = resource.Table('employeecrud')
-print(table.get_item(Key = {'emloyees': 0}))
+response = table.scan()
+data = response['Items']
+for x in data:
+    print(x['Salary'])

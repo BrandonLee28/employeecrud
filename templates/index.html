@@ -29,5 +29,14 @@
           <td>$100,000</td>
           <td><input type="button" value="Edit"><input type="button" value="Delete"></td>
         </tr>
+       {% for x in data %}
+        <tr>
+          <td>{{ x['FirstName']}}</td>
+          <td>{{ x['LastName']}}</td>
+          <td>{{ x['Sex']}}</td>
+          <td>{{'$'+ x['Salary']}}</td>
+          <td><input type="button" value="Edit"><input type="button" value="Delete"></td>
+        </tr>
+      {% endfor %}
       </tbody>
     </table>
